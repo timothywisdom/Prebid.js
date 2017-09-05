@@ -123,8 +123,10 @@ function AppnexusAstAdapter() {
           }
         }
 
+        const videoMediaType = utils.deepAccess(bid, 'mediaTypes.video');
         const context = utils.deepAccess(bid, 'mediaTypes.video.context');
-        if (bid.mediaType === 'video' || context !== 'outstream') {
+
+        if (bid.mediaType === 'video' || (videoMediaType && context !== 'outstream')) {
           tag.require_asset_url = true;
         }
 
